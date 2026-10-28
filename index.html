@@ -687,30 +687,4 @@ setInterval(renderLocalClock,15000);setInterval(()=>{renderEvents();renderCodes(
  try{navigator.storage?.persist?.()}catch(e){}
  save();renderAll();gcMedia()})();
 
-  <!-- 1. مكتبة Supabase -->
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
-<script>
-  // 2. إعدادات الاتصال بقاعدة البيانات
-  const SUPABASE_URL = 'https://dmfssdicsmbcfpufczei.supabase.co';
-  const SUPABASE_KEY = 'sb_publishable_ZfvdPUizjlbla9_ZV5NR-Q_CGKhj';
-  const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
-
-  // 3. دالة لجلب البيانات وعرضها في الموقع
-  async function fetchHeartopiaData() {
-    const { data, error } = await supabaseClient
-      .from('heartopia')
-      .select('*');
-
-    if (error) {
-      console.error('خطأ في جلب البيانات:', error);
-    } else {
-      console.log('تم جلب البيانات بنجاح:', data);
-    }
-  }
-
-  // تشغيل الجلب عند تحميل الصفحة
-  fetchHeartopiaData();
-</script>
-  
 </script></body></html>
