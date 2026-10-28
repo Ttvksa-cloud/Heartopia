@@ -209,7 +209,6 @@ const SUPABASE_URL = 'https://dmfssdicsmbcfpufczei.supabase.co';
 const SUPABASE_KEY = 'sb_publishable_ZfvdPUizjlbla9_ZV5NR-Q_CGKhj';
 const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
-// دالة تجربة جلب البيانات من قاعدة البيانات والتأكد من الربط
 async function fetchHeartopiaData() {
   const { data, error } = await supabaseClient
     .from('heartopia')
@@ -222,7 +221,6 @@ async function fetchHeartopiaData() {
   }
 }
 
-// تشغيل دالة الجلب عند تحميل الصفحة
 fetchHeartopiaData();
 
 /* ================= أدوات عامة ================= */
@@ -241,6 +239,16 @@ function richText(t){return esc(t).replace(/(https?:\/\/[^\s<]+)/g,u=>{const cle
 const h=(tag,props={},...kids)=>{const el=document.createElement(tag);for(const[k,v]of Object.entries(props)){if(k==='class')el.className=v;else if(k==='text')el.textContent=v;else if(k.startsWith('on'))el[k]=v;else if(v===true)el.setAttribute(k,'');else if(v!==false&&v!=null)el.setAttribute(k,v)}kids.flat().forEach(c=>{if(c!=null&&c!==false)el.append(c.nodeType?c:document.createTextNode(c))});return el};
 let toastT;function toast(msg){const t=$('toast');t.textContent=msg;t.classList.add('show');clearTimeout(toastT);toastT=setTimeout(()=>t.classList.remove('show'),3000)}
 async function copyText(text,okMsg='تم النسخ'){try{await navigator.clipboard.writeText(text);toast(okMsg)}catch(e){prompt('انسخي النص:',text)}}
+
+/* ================= البيانات والاظهار الأساسي ================= */
+const DEFAULT_CYCLE=[["غابة البلوط الروحية", "قطعة 2"], ["قطعة 3", "قطعة 1"], ["قطعة 5", "قطعة 1"], ["قطعة 12", "قطعة 4"], ["قطعة 2", "قطعة 8"], ["قطعة 8", "قطعة 4"], ["قطعة 4", "قطعة 1"], ["قطعة 8", "أطلال الينابيع الحارة"], ["قطعة 6", "قطعة 8"], ["قطعة 8", "قطعة 8"], ["قطعة 12", "قطعة 6"], ["قطعة 10", "قطعة 2"], ["قطعة 7", "قطعة 2"], ["قطعة 12", "أطلال الينابيع الحارة"], ["قطعة 8", "قطعة 5"], ["قطعة 6", "قطعة 11"], ["قطعة 11", "قطعة 11"], ["قطعة 2", "قطعة 2"], ["قطعة 9", "قطعة 12"], ["قطعة 3", "قطعة 4"], ["قطعة 6", "قطعة 11"], ["قطعة 2", "قطعة 7"], ["قطعة 11", "قطعة 9"], ["غابة البلوط الروحية", "قطعة 4"], ["غابة البلوط الروحية", "قطعة 4"], ["قطعة 11", "قطعة 7"], ["قطعة 9", "قطعة 5"], ["قطعة 10", "قطعة 3"], ["قطعة 3", "قطعة 7"], ["قطعة 6", "قطعة 7"], ["قطعة 9", "قطعة 1"], ["قطعة 4", "قطعة 5"], ["قطعة 10", "قطعة 9"], ["غابة البلوط الروحية", "قطعة 11"], ["قطعة 7", "قطعة 6"], ["قطعة 6", "قطعة 2"], ["قطعة 11", "قطعة 2"], ["قطعة 2", "قطعة 3"], ["قطعة 12", "قطعة 12"], ["قطعة 4", "قطعة 11"], ["قطعة 12", "أطلال الينابيع الحارة"], ["غابة البلوط الروحية", "قطعة 8"], ["قطعة 2", "قطعة 5"], ["قطعة 1", "قطعة 4"], ["قطعة 10", "قطعة 11"], ["قطعة 5", "أطلال الينابيع الحارة"], ["قطعة 10", "قطعة 8"], ["قطعة 4", "قطعة 8"], ["قطعة 7", "قطعة 2"], ["قطعة 3", "قطعة 2"]];
+const DEFAULT_TASKS=['جمع 5 من السمك','زيارة شجرة البلوط','التقاط 5 حشرات','زراعة 5 أزهار'];
+
+// تشغيل الواجهة الأساسية
+document.addEventListener('DOMContentLoaded', () => {
+  $('clockTime').textContent = '12:00';
+  $('weatherName').textContent = 'مشمس';
+});
 </script>
 </body>
 </html>
